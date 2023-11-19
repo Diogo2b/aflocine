@@ -48,14 +48,12 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="{{ path('films_list') }}">Films</a>
+							<a class="nav-link active" aria-current="page" href="{{ path('app_film') }}">Films</a>
 
 						</li>
+
 						<li class="nav-item">
-							<a class="nav-link" href="{{ path('seance_index') }}">Séances</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('seance_index') }}">Séances</a>
+							<a class="nav-link active" aria-current="page" href="{{ path('seance_index') }}">Seances</a>
 						</li>
 						{% if not app.user %}
 							<li class="nav-item">

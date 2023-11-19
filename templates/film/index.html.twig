@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<style>
+		.card-img-top {
+			height: 200px;
+			object-fit: cover;
+		}
+		.card-body {
+			height: 150px;
+			overflow: hidden;
+		}
+		.card-text.collapsed {
+			max-height: 50px; /* Altura máxima quando colapsado */
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		.card-text.expanded {
+			max-height: none; /* Remover limitação de altura quando expandido */
+		}
+	</style>
+{% endblock %}
+{% block javascripts %}
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+document.querySelectorAll('.read-more').forEach(function (button) {
+button.addEventListener('click', function () {
+var cardText = this.previousElementSibling.querySelector('.card-text');
+if (cardText.classList.contains('collapsed')) {
+cardText.classList.remove('collapsed');
+cardText.classList.add('expanded');
+this.textContent = 'Ler menos';
+} else {
+cardText.classList.remove('expanded');
+cardText.classList.add('collapsed');
+this.textContent = 'Ler mais';
+}
+});
+});
+});
+	</script>
+{% endblock %}
+
+
+{% block title %}Films
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-4">
+		<h2 class="text-white mb-3">Our Films</h2>
+		<div class="row">
+			{% for film in films %}
+				<div class="col-md-4 mb-4">
+					<div
+						class="card bg-dark text-white">
+						<!-- Substitua 'path/to/film/image.jpg' pelo caminho real da imagem do filme -->
+						<img src="{{ asset('uploads/films/' ~ film.affiche) }}" alt="Affiche de {{ film.titre }}" class="card-img-top">
+						<div class="card-body">
+							<h5 class="card-title">{{ film.titre }}</h5>
+							<p class="card-text collapsed">{{ film.description }}</p>
+							<button class="read-more btn btn-link">Ler mais</button>
+						</div>
+					</div>
+				</div>
+			{% else %}
+				<p class="text-white">Nenhum filme encontrado.</p>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

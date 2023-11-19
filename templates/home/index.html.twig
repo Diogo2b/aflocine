@@ -6,6 +6,22 @@
 
 		<section class="films-grid">
 			<div class="row">
+				{% for seance in seances_du_jour %}
+					<div class="seance-item">
+						<h2>{{ seance.film.titre }}</h2>
+						<p>Date et Heure:
+							{{ seance.dateHeure|date('d/m/Y H:i') }}</p>
+						<p>Salle:
+							{{ seance.salle }}</p>
+						<!-- Adicione mais informações sobre a seance se necessário -->
+					</div>
+				{% else %}
+					<p>Aucune séance n'est disponible pour le moment.</p>
+				{% endfor %}
+			</div>
+		</section>
+		<section class="films-grid">
+			<div class="row">
 				{% for film in films_semaine %}
 					<div class="col-md-4 mb-4">
 						<div class="card bg-dark text-white h-100">

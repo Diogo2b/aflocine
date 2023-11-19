@@ -9,14 +9,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 class FilmController extends AbstractController
 {
-    /**
-     * @Route("/films", name="films_list")
-     */
+    #[Route('/film', name: 'app_film')]
     public function index(FilmRepository $filmRepository)
     {
         $films = $filmRepository->findAll();
 
-        return $this->render('films_index.html.twig', [
+        return $this->render('film/index.html.twig', [
+            'controller_name' => 'FilmController',
             'films' => $films,
         ]);
     }

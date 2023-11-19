@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Séances -
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<h1>Séances</h1>
+	<div class="seances-list">
+		{% for seance in seances %}
+			<div class="seance-item">
+				<h2>{{ seance.film.titre }}</h2>
+				<p>Date et Heure:
+					{{ seance.dateHeure|date('d/m/Y H:i') }}</p>
+				<p>Salle:
+					{{ seance.salle }}</p>
+				<!-- Adicione mais informações sobre a seance se necessário -->
+			</div>
+		{% else %}
+			<p>Aucune séance n'est disponible pour le moment.</p>
+		{% endfor %}
+	</div>
+{% endblock %}
