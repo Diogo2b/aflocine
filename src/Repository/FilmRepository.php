@@ -63,12 +63,9 @@ class FilmRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('f');
 
-        // Exemplo de consulta: buscar filmes que têm uma data de exibição na semana atual
-        // Você precisará ajustar a consulta para corresponder à sua lógica de negócios e estrutura de banco de dados
-        $qb->where('f.dateDeSortie BETWEEN :start AND :end')
-            ->setParameter('start', new \DateTime('monday this week'))
-            ->setParameter('end', new \DateTime('sunday this week'))
-            ->orderBy('f.dateDeSortie', 'ASC');
+
+        $qb->orderBy('f.id', 'DESC')
+            ->setMaxResults(3);
 
         return $qb->getQuery()->getResult();
     }

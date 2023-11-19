@@ -3,3 +3,12 @@ controllers:
     path: ../src/Controller/
     namespace: App\Controller
   type: attribute
+# Routes for films
+
+films_list:
+    path: /films
+    controller: App\Controller\FilmController::list
+
+film_show:
+    path: /films/{id}
+    controller: App\Controller\FilmController::show
