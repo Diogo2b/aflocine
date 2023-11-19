@@ -6,53 +6,51 @@
 			{% block title %}Welcome!
 			{% endblock %}
 		</title>
-		<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><text y='1.2em' font-size='96'>⚫️</text></svg>">
-		{% block stylesheets %}
-			{{ encore_entry_link_tags('app') }}
-		{% endblock %}
-	</head>
-	<body>
-		<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="{{ path('home') }}">
-					<img src="{{ asset('favicon.png') }}" alt="Logo aflocine" width="30" height="24">
-					Aflocine
-				</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav">
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="{{ path('home') }}">Films</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('seance_index') }}">Séances</a>
-						</li>
-						{% if not app.user %}
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><text y='1.2em' font-size='96'>⚫️</text></svg>"> {% block stylesheets %}{% endblock %}
+		</head>
+		<body>
+			<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="{{ path('home') }}">
+						<img src="{{ asset('favicon.png') }}" alt="Logo aflocine" width="30" height="24">
+						Aflocine
+					</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarNav">
+						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+								<a class="nav-link active" aria-current="page" href="{{ path('home') }}">Films</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+								<a class="nav-link" href="{{ path('seance_index') }}">Séances</a>
 							</li>
-						{% else %}
-							<li class="nav-item">
-								<a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
-							</li>
-						{% endif %}
-					</ul>
+							{% if not app.user %}
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+								</li>
+							{% else %}
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+								</li>
+							{% endif %}
+						</ul>
+					</div>
 				</div>
-			</div>
-		</nav>
+			</nav>
 
-		{% block body %}{% endblock %}
+			{% block body %}{% endblock %}
 
-		{% block javascripts %}
-			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-			{{ encore_entry_script_tags('app') }}
-		{% endblock %}
-	</body>
-</html>
+			{% block javascripts %}
+
+				<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+				<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+				<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+			{% endblock %}
+		</body>
+	</html>

@@ -20,9 +20,7 @@ class DashboardController extends AbstractDashboardController
     {
 
         $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
-        $url = $adminUrlGenerator->setController(FilmCrudController::class)->generateUrl();
-
-        return $this->redirect($url);
+        return $this->redirect($adminUrlGenerator->setController(FilmCrudController::class)->generateUrl());
     }
 
     public function configureDashboard(): Dashboard
