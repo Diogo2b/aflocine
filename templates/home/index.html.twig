@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AfloCine - Accueil
+{% endblock %}
+
+{% block body %}
+	<!-- Seção de filmes da semana -->
+	<section class="films-week">
+		<h2>Films de la Semaine</h2>
+		<div class="film-list">
+			{% for film in films_semaine %}
+				<article class="film">
+					<img src="{{ asset('uploads/films/' ~ film.affiche) }}" alt="Affiche de {{ film.titre }}">
+					<h3>{{ film.titre }}</h3>
+
+				</article>
+			{% else %}
+				<p>Aucun film à afficher pour la semaine.</p>
+			{% endfor %}
+		</div>
+	</section>
+
+
+	<section class="sessions-day">
+		<h2>Séances du Jour</h2>
+		<div class="session-list">
+			{% for seance in seances_du_jour %}
+				<article class="session">
+					<time>{{ seance.dateHeure|date('H:i') }}</time>
+					<p>{{ seance.film.titre }}</p>
+
+					{# <a href="{{ path('note_film', { 'filmId': seance.film.id }) }}">Noter ce film</a> #}
+				</article>
+			{% else %}
+				<p>Aucune séance à afficher pour aujourd'hui.</p>
+			{% endfor %}
+		</div>
+	</section>
+	{% if not app.user %}
+		<!-- Formulário de login -->
+		<div class="login-form-container">
+			<h2>Connexion</h2>
+			{{ include('security/login.html.twig') }}
+		</div>
+	{% endif %}
+{% endblock %}
