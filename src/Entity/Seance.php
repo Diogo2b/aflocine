@@ -119,4 +119,8 @@ class Seance
 
         return $this;
     }
+    public function __toString()
+    {
+        return $this->dateHeure->format('Y-m-d H:i:s');
+    }
 }

@@ -145,4 +145,8 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // Intentionnellement vide; vous pouvez utiliser cette méthode pour effacer les données sensibles.
     }
+    public function __toString()
+    {
+        return $this->nom; // Substitua 'name' pelo campo que representa melhor o objeto
+    }
 }
